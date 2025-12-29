@@ -214,35 +214,29 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // --- CONFIGURATION ---
-        // Using relative path to the folder in the same repo
-        const BASE_DATA_URL = 'anime_index';
+        // Use the relative path to your database folder
+        const DATA_PATH = 'anime_index';
 
-        // --- FETCH & RENDER FUNCTIONS ---
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPopularAnime();
+            loadAiringEpisodes();
+        });
 
-        async function loadDashboard() {
-            await Promise.all([
-                loadPopularAnime(),
-                loadAiringEpisodes()
-            ]);
-        }
-
-        // 1. Load Popular Anime
+        // 1. LOAD POPULAR ANIME
         async function loadPopularAnime() {
+            const container = document.getElementById('popular-container');
             try {
-                // Fetch popular.json from relative path
-                const response = await fetch(`${BASE_DATA_URL}/popular.json`);
-                if (!response.ok) throw new Error("Failed to load popular");
+                const response = await fetch(`${DATA_PATH}/popular.json`);
+                if (!response.ok) throw new Error("Popular file not found");
                 
-                const animes = await response.json();
-                const container = document.getElementById('popular-container');
-                
-                if (animes.length === 0) {
+                const popularList = await response.json(); // Expecting array of anime objects
+
+                if (!popularList || popularList.length === 0) {
                     container.innerHTML = '<p class="text-muted ms-3">No popular anime found.</p>';
                     return;
                 }
 
-                container.innerHTML = animes.map(anime => `
+                container.innerHTML = popularList.map(anime => `
                     <a href="episodes.html?id=${anime.id}" class="anime-card horizontal-card">
                         <div class="card-img-wrapper">
                             <img src="${getCoverImage(anime.title)}" class="card-img-top" alt="${anime.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/200x280?text=No+Cover'">
@@ -256,47 +250,66 @@
 
             } catch (error) {
                 console.error("Error loading popular:", error);
-                document.getElementById('popular-container').innerHTML = '<p class="text-danger ms-3">Failed to load data.</p>';
+                container.innerHTML = '<p class="text-danger ms-3">Failed to load popular list.</p>';
             }
         }
 
-        // 2. Load Airing Episodes
+        // 2. LOAD AIRING EPISODES
         async function loadAiringEpisodes() {
+            const container = document.getElementById('airing-container');
             try {
-                // Fetch data.json (Airing) from relative path
-                const response = await fetch(`${BASE_DATA_URL}/data.json`);
-                if (!response.ok) throw new Error("Failed to load airing");
+                const response = await fetch(`${DATA_PATH}/data.json`);
+                if (!response.ok) throw new Error("Data file not found");
                 
                 const data = await response.json();
                 
-                // Handle different JSON structures (List vs Object)
                 let episodes = [];
+
+                // LOGIC TO HANDLE DIFFERENT DATA STRUCTURES
                 if (Array.isArray(data)) {
+                    // Structure: [ {episode_url:..., anime_name:...}, ... ]
                     episodes = data;
-                } else if (data.anime_episodes) {
-                    // Convert object to array if needed
-                    episodes = Object.values(data.anime_episodes);
+                } 
+                else if (data.anime_episodes) {
+                    // Structure: { "anime_episodes": { "UUID": { "title": "...", "episodes": [...] } } }
+                    // We need to extract the 'latest' episode from each anime object
+                    const animeDict = data.anime_episodes;
+                    episodes = Object.keys(animeDict).map(key => {
+                        const anime = animeDict[key];
+                        // Get the last item in the 'episodes' array of this anime
+                        const latestEp = anime.episodes && anime.episodes.length > 0 
+                            ? anime.episodes[anime.episodes.length - 1] 
+                            : null;
+                            
+                        if (!latestEp) return null;
+
+                        return {
+                            anime_name: anime.title,
+                            episode_number: latestEp.number,
+                            anime_id: key // The UUID key
+                        };
+                    }).filter(item => item !== null);
                 }
 
-                const container = document.getElementById('airing-container');
-
                 if (episodes.length === 0) {
-                    container.innerHTML = '<div class="col-12 text-center text-muted">No new episodes found today.</div>';
+                    container.innerHTML = '<div class="col-12 text-center text-muted">No new episodes found.</div>';
                     return;
                 }
 
-                // Limit to 24 items for performance
+                // Show top 24
                 const displayList = episodes.slice(0, 24);
 
                 container.innerHTML = displayList.map(ep => {
-                    // Extract ID from URL if not explicitly provided
-                    // URL format: .../play/ANIME_ID/SESSION_ID
-                    let animeId = ep.anime_id; 
+                    // Logic to find ID if not explicitly provided
+                    // New script usually provides 'anime_id' or 'episode_url'
+                    let animeId = ep.anime_id;
                     if (!animeId && ep.episode_url) {
                          const parts = ep.episode_url.split('/');
-                         // animepahe.si/play/ID/SESSION
                          if (parts.length >= 5) animeId = parts[4];
                     }
+                    
+                    // Fallback if ID is totally missing (rare)
+                    if (!animeId) animeId = "#"; 
 
                     return `
                     <div class="col-6 col-md-4 col-lg-3 col-xl-2">
@@ -316,18 +329,14 @@
 
             } catch (error) {
                 console.error("Error loading airing:", error);
-                document.getElementById('airing-container').innerHTML = '<div class="col-12 text-center text-danger">Failed to load episodes.</div>';
+                container.innerHTML = '<div class="col-12 text-center text-danger">Failed to load episodes.</div>';
             }
         }
 
-        // Helper: Generate a consistent cover image URL
+        // Helper: Generate cover image
         function getCoverImage(title) {
             return `https://ui-avatars.com/api/?name=${encodeURIComponent(title)}&background=0D8ABC&color=fff&size=256&font-size=0.33`;
         }
-
-        // --- INIT ---
-        document.addEventListener('DOMContentLoaded', loadDashboard);
-
     </script>
 </body>
 </html>
