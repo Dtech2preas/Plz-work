@@ -1,1 +1,169 @@
-[]
+{
+  "anime_episodes": {},
+  "episode_iframes": {},
+  "currently_airing_episodes": {
+    "episodes": [],
+    "timestamp": "2025-12-29T16:23:46.390343",
+    "count": 0
+  },
+  "popular_anime": {
+    "anime": [
+      {
+        "title": "Jujutsu Kaisen",
+        "id": "f17542f8-906c-d63f-8f67-1ff083867bc6",
+        "url": "https://animepahe.si/anime/f17542f8-906c-d63f-8f67-1ff083867bc6"
+      },
+      {
+        "title": "Sante FX x One Piece",
+        "id": "9acaf314-ad2c-9537-6c9e-0eed68ab8632",
+        "url": "https://animepahe.si/anime/9acaf314-ad2c-9537-6c9e-0eed68ab8632"
+      },
+      {
+        "title": "Dan Da Dan",
+        "id": "f789184a-0479-abe3-14b9-155f323a125c",
+        "url": "https://animepahe.si/anime/f789184a-0479-abe3-14b9-155f323a125c"
+      },
+      {
+        "title": "Kaiju No. 8",
+        "id": "5a14478b-43b7-a58f-664b-775abc5941f0",
+        "url": "https://animepahe.si/anime/5a14478b-43b7-a58f-664b-775abc5941f0"
+      },
+      {
+        "title": "Kaiju No. 8 Season 2",
+        "id": "e7f9b554-0f0d-3dbd-e8b1-ae226206aa67",
+        "url": "https://animepahe.si/anime/e7f9b554-0f0d-3dbd-e8b1-ae226206aa67"
+      },
+      {
+        "title": "Black Clover",
+        "id": "99e2b0a4-a9f9-a2d9-98ac-d2b1a649328e",
+        "url": "https://animepahe.si/anime/99e2b0a4-a9f9-a2d9-98ac-d2b1a649328e"
+      },
+      {
+        "title": "Demon Slayer: Kimetsu no Yaiba",
+        "id": "8d0c8929-47e2-a116-8c83-5b83afec7b1e",
+        "url": "https://animepahe.si/anime/8d0c8929-47e2-a116-8c83-5b83afec7b1e"
+      },
+      {
+        "title": "Akame ga Kill!",
+        "id": "dcb2b21f-a70d-84f7-fbab-580701484066",
+        "url": "https://animepahe.si/anime/dcb2b21f-a70d-84f7-fbab-580701484066"
+      },
+      {
+        "title": "Chainsaw Man",
+        "id": "12578991-6fd4-0e6c-6a2b-0f19ce73901e",
+        "url": "https://animepahe.si/anime/12578991-6fd4-0e6c-6a2b-0f19ce73901e"
+      },
+      {
+        "title": "Boruto: Naruto Next Generations",
+        "id": "377d22f8-163f-9d1c-9119-cf3d49880983",
+        "url": "https://animepahe.si/anime/377d22f8-163f-9d1c-9119-cf3d49880983"
+      },
+      {
+        "title": "Bleach",
+        "id": "d73ac2e4-cf2f-b467-ad0e-947e647701e3",
+        "url": "https://animepahe.si/anime/d73ac2e4-cf2f-b467-ad0e-947e647701e3"
+      },
+      {
+        "title": "The Eminence in Shadow",
+        "id": "06456ecd-91a5-6a54-16f4-9f7a9bf8d9c1",
+        "url": "https://animepahe.si/anime/06456ecd-91a5-6a54-16f4-9f7a9bf8d9c1"
+      },
+      {
+        "title": "Attack on Titan",
+        "id": "7ff2101d-5ff6-03f0-9584-e15c43fb8d7c",
+        "url": "https://animepahe.si/anime/7ff2101d-5ff6-03f0-9584-e15c43fb8d7c"
+      },
+      {
+        "title": "My Hero Academia",
+        "id": "8ff35baa-e854-df41-be89-e25f64e6546d",
+        "url": "https://animepahe.si/anime/8ff35baa-e854-df41-be89-e25f64e6546d"
+      },
+      {
+        "title": "Spy x Family",
+        "id": "ae719b6d-ab9f-c6e9-d3a7-8092db13afe0",
+        "url": "https://animepahe.si/anime/ae719b6d-ab9f-c6e9-d3a7-8092db13afe0"
+      },
+      {
+        "title": "Tokyo Revengers",
+        "id": "f76b7f91-99f8-77c4-2128-f2e8c104c80d",
+        "url": "https://animepahe.si/anime/f76b7f91-99f8-77c4-2128-f2e8c104c80d"
+      },
+      {
+        "title": "Dr. Stone",
+        "id": "522e73ef-80c9-a23e-83ed-84b7482b69e4",
+        "url": "https://animepahe.si/anime/522e73ef-80c9-a23e-83ed-84b7482b69e4"
+      },
+      {
+        "title": "Blue Lock",
+        "id": "482ee04f-39d2-e088-a6b0-69ced82516a3",
+        "url": "https://animepahe.si/anime/482ee04f-39d2-e088-a6b0-69ced82516a3"
+      },
+      {
+        "title": "Haikyuu!! Special Feature! The Spring Tournament of Their Youth",
+        "id": "f133228d-9ad0-dc30-ad98-3f06b6e83f09",
+        "url": "https://animepahe.si/anime/f133228d-9ad0-dc30-ad98-3f06b6e83f09"
+      },
+      {
+        "title": "One Punch Man Season 2 Specials",
+        "id": "e23e4123-e177-7fe0-ca1a-7c5187d02aab",
+        "url": "https://animepahe.si/anime/e23e4123-e177-7fe0-ca1a-7c5187d02aab"
+      },
+      {
+        "title": "Mob Psycho 100",
+        "id": "b3c07d26-ebc9-0b76-769a-ba221262c21c",
+        "url": "https://animepahe.si/anime/b3c07d26-ebc9-0b76-769a-ba221262c21c"
+      },
+      {
+        "title": "Hunter x Hunter",
+        "id": "e042733c-896d-b968-7bb4-9bfbfba69630",
+        "url": "https://animepahe.si/anime/e042733c-896d-b968-7bb4-9bfbfba69630"
+      },
+      {
+        "title": "Death Note",
+        "id": "a50c159e-da7d-aad4-479a-1f9aa2a582b9",
+        "url": "https://animepahe.si/anime/a50c159e-da7d-aad4-479a-1f9aa2a582b9"
+      },
+      {
+        "title": "Fullmetal Alchemist: Brotherhood",
+        "id": "00f27285-dd2b-3dde-9644-a76279fc1282",
+        "url": "https://animepahe.si/anime/00f27285-dd2b-3dde-9644-a76279fc1282"
+      },
+      {
+        "title": "Code Geass: Akito the Exiled - Memories of Hatred",
+        "id": "a622ddf7-312e-2a05-fcae-86a39973b92c",
+        "url": "https://animepahe.si/anime/a622ddf7-312e-2a05-fcae-86a39973b92c"
+      },
+      {
+        "title": "Steins;Gate",
+        "id": "4e09a245-4ba5-754d-5e25-5dafd815e359",
+        "url": "https://animepahe.si/anime/4e09a245-4ba5-754d-5e25-5dafd815e359"
+      },
+      {
+        "title": "Re:ZERO -Starting Life in Another World-",
+        "id": "d800c1b6-51ac-2e0f-5e73-70726a0661f7",
+        "url": "https://animepahe.si/anime/d800c1b6-51ac-2e0f-5e73-70726a0661f7"
+      },
+      {
+        "title": "KonoSuba: An Explosion on This Wonderful World!",
+        "id": "907d4375-13b5-6072-2c16-dd112854df35",
+        "url": "https://animepahe.si/anime/907d4375-13b5-6072-2c16-dd112854df35"
+      },
+      {
+        "title": "Overlord",
+        "id": "4af7e685-c0e4-4b62-14ff-8fd3f7f79926",
+        "url": "https://animepahe.si/anime/4af7e685-c0e4-4b62-14ff-8fd3f7f79926"
+      },
+      {
+        "title": "Queen's Blade: Inheritor of the Throne",
+        "id": "12df2d5e-9cd1-05ef-10eb-4b239641e215",
+        "url": "https://animepahe.si/anime/12df2d5e-9cd1-05ef-10eb-4b239641e215"
+      }
+    ],
+    "timestamp": "2025-12-29T16:23:46.390358",
+    "count": 30
+  },
+  "metadata": {
+    "created_at": "2025-12-29T16:23:46.390353",
+    "last_updated": "2025-12-29T16:23:46.390361"
+  }
+}
