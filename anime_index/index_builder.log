@@ -1,0 +1,77 @@
+2025-11-18 04:06:37,001 - INFO - 🚀 Starting complete anime index build...
+2025-11-18 04:06:37,683 - INFO - 🚀 Starting to extract ALL anime from site...
+2025-11-18 04:06:44,758 - INFO - 📄 Processing page 1...
+2025-11-18 04:06:45,323 - INFO -    Found 6037 anime (6037 new)
+2025-11-18 04:06:52,573 - INFO - 📄 Processing page 2...
+2025-11-18 04:06:52,581 - INFO -    Found 22 anime (10 new)
+2025-11-18 04:06:58,366 - INFO - 📄 Processing page 3...
+2025-11-18 04:06:58,372 - INFO -    Found 22 anime (0 new)
+2025-11-18 04:07:29,405 - INFO - 🎉 Extraction complete! Found 6047 unique anime from 3 pages
+2025-11-18 04:07:29,410 - INFO - 📊 Organized 6047 anime into 29 letter groups
+2025-11-18 04:07:29,410 - INFO -    Letter '#': 35 anime
+2025-11-18 04:07:29,410 - INFO -    Letter 'A': 410 anime
+2025-11-18 04:07:29,410 - INFO -    Letter 'B': 321 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'C': 281 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'D': 288 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'E': 64 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'F': 204 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'G': 285 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'H': 325 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'I': 180 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'J': 47 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'K': 325 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'L': 205 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'M': 531 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'N': 170 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'O': 178 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'P': 238 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'Q': 15 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'R': 198 anime
+2025-11-18 04:07:29,411 - INFO -    Letter 'S': 578 anime
+2025-11-18 04:07:29,412 - INFO -    Letter 'T': 722 anime
+2025-11-18 04:07:29,412 - INFO -    Letter 'U': 101 anime
+2025-11-18 04:07:29,412 - INFO -    Letter 'V': 40 anime
+2025-11-18 04:07:29,412 - INFO -    Letter 'W': 118 anime
+2025-11-18 04:07:29,412 - INFO -    Letter 'X': 14 anime
+2025-11-18 04:07:29,412 - INFO -    Letter 'Y': 146 anime
+2025-11-18 04:07:29,412 - INFO -    Letter 'Z': 26 anime
+2025-11-18 04:07:29,412 - INFO -    Letter 'Ü': 1 anime
+2025-11-18 04:07:29,412 - INFO -    Letter 'Ō': 1 anime
+2025-11-18 04:07:29,414 - INFO - 💾 Saved 288 anime to anime_D.json
+2025-11-18 04:07:29,416 - INFO - 💾 Saved 180 anime to anime_I.json
+2025-11-18 04:07:29,419 - INFO - 💾 Saved 281 anime to anime_C.json
+2025-11-18 04:07:29,424 - INFO - 💾 Saved 722 anime to anime_T.json
+2025-11-18 04:07:29,427 - INFO - 💾 Saved 325 anime to anime_H.json
+2025-11-18 04:07:29,427 - INFO - 💾 Saved 35 anime to anime_#.json
+2025-11-18 04:07:29,430 - INFO - 💾 Saved 410 anime to anime_A.json
+2025-11-18 04:07:29,433 - INFO - 💾 Saved 321 anime to anime_B.json
+2025-11-18 04:07:29,434 - INFO - 💾 Saved 64 anime to anime_E.json
+2025-11-18 04:07:29,436 - INFO - 💾 Saved 204 anime to anime_F.json
+2025-11-18 04:07:29,438 - INFO - 💾 Saved 285 anime to anime_G.json
+2025-11-18 04:07:29,439 - INFO - 💾 Saved 47 anime to anime_J.json
+2025-11-18 04:07:29,442 - INFO - 💾 Saved 325 anime to anime_K.json
+2025-11-18 04:07:29,443 - INFO - 💾 Saved 205 anime to anime_L.json
+2025-11-18 04:07:29,448 - INFO - 💾 Saved 531 anime to anime_M.json
+2025-11-18 04:07:29,450 - INFO - 💾 Saved 170 anime to anime_N.json
+2025-11-18 04:07:29,451 - INFO - 💾 Saved 178 anime to anime_O.json
+2025-11-18 04:07:29,453 - INFO - 💾 Saved 238 anime to anime_P.json
+2025-11-18 04:07:29,453 - INFO - 💾 Saved 15 anime to anime_Q.json
+2025-11-18 04:07:29,455 - INFO - 💾 Saved 198 anime to anime_R.json
+2025-11-18 04:07:29,459 - INFO - 💾 Saved 578 anime to anime_S.json
+2025-11-18 04:07:29,460 - INFO - 💾 Saved 101 anime to anime_U.json
+2025-11-18 04:07:29,461 - INFO - 💾 Saved 40 anime to anime_V.json
+2025-11-18 04:07:29,462 - INFO - 💾 Saved 118 anime to anime_W.json
+2025-11-18 04:07:29,464 - INFO - 💾 Saved 14 anime to anime_X.json
+2025-11-18 04:07:29,465 - INFO - 💾 Saved 146 anime to anime_Y.json
+2025-11-18 04:07:29,466 - INFO - 💾 Saved 26 anime to anime_Z.json
+2025-11-18 04:07:29,466 - INFO - 💾 Saved 1 anime to anime_Ü.json
+2025-11-18 04:07:29,466 - INFO - 💾 Saved 1 anime to anime_Ō.json
+2025-11-18 04:07:29,466 - INFO - 📁 Master index saved: anime_index/master_index.json
+2025-11-18 04:07:29,467 - INFO - 
+🎉 INDEX BUILD COMPLETED!
+2025-11-18 04:07:29,467 - INFO - 📊 Total anime: 6047
+2025-11-18 04:07:29,467 - INFO - 📁 Total letters: 29
+2025-11-18 04:07:29,467 - INFO - ⏱️ Total time: 51.78 seconds
+2025-11-18 08:21:54,301 - INFO - 🚀 Starting complete anime index build...
+2025-11-18 08:21:55,116 - INFO - 🚀 Starting to extract ALL anime from site...
+2025-11-18 08:21:58,369 - ERROR - 💥 Unexpected error: Browser.close: Connection closed while reading from the driver
