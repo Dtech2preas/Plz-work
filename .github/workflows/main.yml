@@ -2,8 +2,12 @@ name: Auto-Update Anime
 
 on:
   schedule:
-    - cron: '0 */4 * * *'  # Run every 4 hours
+    - cron: '0 */6 * * *'  # Run every 6 hours
   workflow_dispatch:       # Allows manual button click
+
+# FIX 1: Grant permission to write changes back to the repo
+permissions:
+  contents: write
 
 jobs:
   update-data:
@@ -22,23 +26,27 @@ jobs:
           pip install playwright requests beautifulsoup4
           playwright install chromium
 
-      - name: Run Scrapers
+      - name: Run Scrapers & Organize Files
         run: |
-          # 1. Update Airing Episodes (Saves to anime_index/data.json)
+          # 1. Run Airing Scraper
           python scripts/airing.py
-          
-          # 2. Update Popular List (Saves to anime_index/popular.json)
+          # FIX 2: Move the output from root to the correct folder
+          mv data.json anime_index/data.json
+
+          # 2. Run Popular Scraper
           python scripts/pop.py
+          # FIX 3: pop.py also creates 'data.json', so we rename it to popular.json
+          mv data.json anime_index/popular.json
 
       - name: Commit & Push Changes
         run: |
           git config --global user.name "Auto-Updater"
           git config --global user.email "bot@dtech.com"
           
-          # Add the modified JSON files
-          git add anime_index/data.json
-          git add anime_index/popular.json
+          # Force add the files to ensure they are tracked
+          git add -f anime_index/data.json
+          git add -f anime_index/popular.json
           
-          # Commit only if there are changes
-          git commit -m "🔥 Auto-Update: Fresh Episodes" || echo "No new updates found"
+          # Commit and Push
+          git commit -m "🔥 Auto-Update: Fresh Episodes" || echo "No changes to commit"
           git push
