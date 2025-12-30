@@ -4,6 +4,22 @@
   "currently_airing_episodes": {
     "episodes": [
       {
+        "anime_name": "Chitose Is in the Ramune Bottle",
+        "episode_number": 10,
+        "episode_title": "Chitose Is in the Ramune Bottle - Episode 10",
+        "anime_id": "41fe3847-c1bf-b9ce-880b-76afeae41c34",
+        "session_id": "01180894b2926ae6af3388056a219a092b83e4f379614d784754eb046bfd1d80",
+        "episode_url": "https://animepahe.si/play/41fe3847-c1bf-b9ce-880b-76afeae41c34/01180894b2926ae6af3388056a219a092b83e4f379614d784754eb046bfd1d80"
+      },
+      {
+        "anime_name": "With You, Our Love Will Make It Through",
+        "episode_number": 12,
+        "episode_title": "With You, Our Love Will Make It Through - Episode 12",
+        "anime_id": "93d389c8-1dbb-3b3e-3962-28abbfdd5567",
+        "session_id": "8ac7de73b6b120e6b9c6b436af75c5c1df2bfad8ad9701cad5c13bd1f1193d82",
+        "episode_url": "https://animepahe.si/play/93d389c8-1dbb-3b3e-3962-28abbfdd5567/8ac7de73b6b120e6b9c6b436af75c5c1df2bfad8ad9701cad5c13bd1f1193d82"
+      },
+      {
         "anime_name": "A Mangaka's Weirdly Wonderful Workplace",
         "episode_number": 13,
         "episode_title": "A Mangaka's Weirdly Wonderful Workplace - Episode 13",
@@ -236,28 +252,12 @@
         "episode_url": "https://animepahe.si/play/d1bb2ca2-52f0-f9e5-7375-7e0dae088a9b/e515d0abcf447a5031a4ae2854fe11c056157b7415cfb8ed7aae0e006400a303"
       },
       {
-        "anime_name": "Chitose Is in the Ramune Bottle",
-        "episode_number": 9,
-        "episode_title": "Chitose Is in the Ramune Bottle - Episode 9",
-        "anime_id": "41fe3847-c1bf-b9ce-880b-76afeae41c34",
-        "session_id": "8aebedf9c4a483155a9b914f4f85a9a1db271b5d79f86fb8c7c78eeb5c30f5ef",
-        "episode_url": "https://animepahe.si/play/41fe3847-c1bf-b9ce-880b-76afeae41c34/8aebedf9c4a483155a9b914f4f85a9a1db271b5d79f86fb8c7c78eeb5c30f5ef"
-      },
-      {
         "anime_name": "Campfire Cooking in Another World with My Absurd Skill Season 2",
         "episode_number": 12,
         "episode_title": "Campfire Cooking in Another World with My Absurd Skill Season 2 - Episode 12",
         "anime_id": "38782966-a6fb-7f3b-ecd9-a2cf0593fde4",
         "session_id": "43a4daf9a32cc9fb16ba0d1f8dbc9e4f371a0db90466ea5c0cac3674362b4d24",
         "episode_url": "https://animepahe.si/play/38782966-a6fb-7f3b-ecd9-a2cf0593fde4/43a4daf9a32cc9fb16ba0d1f8dbc9e4f371a0db90466ea5c0cac3674362b4d24"
-      },
-      {
-        "anime_name": "With You, Our Love Will Make It Through",
-        "episode_number": 11,
-        "episode_title": "With You, Our Love Will Make It Through - Episode 11",
-        "anime_id": "93d389c8-1dbb-3b3e-3962-28abbfdd5567",
-        "session_id": "601fad2f267f8a1283fb33c5751b7aab7dbb15cbff9c70d523b0a7b1c3f51f3d",
-        "episode_url": "https://animepahe.si/play/93d389c8-1dbb-3b3e-3962-28abbfdd5567/601fad2f267f8a1283fb33c5751b7aab7dbb15cbff9c70d523b0a7b1c3f51f3d"
       },
       {
         "anime_name": "My Status as an Assassin Obviously Exceeds the Hero's",
@@ -484,16 +484,16 @@
         "episode_url": "https://animepahe.si/play/121849f4-890d-db95-3a0b-34e0e9a9360b/742b808ab1d6c4a8f8a70aef605622e824ba60bc95d6869080300380a9bab600"
       }
     ],
-    "timestamp": "2025-12-30T12:22:29.869930",
+    "timestamp": "2025-12-30T18:17:22.385666",
     "count": 60
   },
   "popular_anime": {
     "anime": [],
-    "timestamp": "2025-12-30T12:22:29.869926",
+    "timestamp": "2025-12-30T18:17:22.385659",
     "count": 0
   },
   "metadata": {
-    "created_at": "2025-12-30T12:22:29.869927",
-    "last_updated": "2025-12-30T12:22:29.869931"
+    "created_at": "2025-12-30T18:17:22.385662",
+    "last_updated": "2025-12-30T18:17:22.385668"
   }
 }
