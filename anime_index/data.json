@@ -4,6 +4,14 @@
   "currently_airing_episodes": {
     "episodes": [
       {
+        "anime_name": "100 Meters",
+        "episode_number": 1,
+        "episode_title": "100 Meters - Episode 1",
+        "anime_id": "e69601ee-3c79-fb93-74f5-e105f76a9384",
+        "session_id": "acf40c9d55194b9f0da8333130d136c4893f517bbd95a47b4a0488ce2ec97ada",
+        "episode_url": "https://animepahe.si/play/e69601ee-3c79-fb93-74f5-e105f76a9384/acf40c9d55194b9f0da8333130d136c4893f517bbd95a47b4a0488ce2ec97ada"
+      },
+      {
         "anime_name": "Chitose Is in the Ramune Bottle",
         "episode_number": 10,
         "episode_title": "Chitose Is in the Ramune Bottle - Episode 10",
@@ -474,26 +482,18 @@
         "anime_id": "c83d2023-0165-e51c-3501-64efd4645493",
         "session_id": "d3b8cabbf3c4dc8f067e48425a500c0b27117225ae97d61faf9d87c0463ed37d",
         "episode_url": "https://animepahe.si/play/c83d2023-0165-e51c-3501-64efd4645493/d3b8cabbf3c4dc8f067e48425a500c0b27117225ae97d61faf9d87c0463ed37d"
-      },
-      {
-        "anime_name": "Solo Camping for Two",
-        "episode_number": 24,
-        "episode_title": "Solo Camping for Two - Episode 24",
-        "anime_id": "121849f4-890d-db95-3a0b-34e0e9a9360b",
-        "session_id": "742b808ab1d6c4a8f8a70aef605622e824ba60bc95d6869080300380a9bab600",
-        "episode_url": "https://animepahe.si/play/121849f4-890d-db95-3a0b-34e0e9a9360b/742b808ab1d6c4a8f8a70aef605622e824ba60bc95d6869080300380a9bab600"
       }
     ],
-    "timestamp": "2025-12-31T06:18:55.360539",
+    "timestamp": "2025-12-31T12:21:38.240946",
     "count": 60
   },
   "popular_anime": {
     "anime": [],
-    "timestamp": "2025-12-31T06:18:55.360532",
+    "timestamp": "2025-12-31T12:21:38.240939",
     "count": 0
   },
   "metadata": {
-    "created_at": "2025-12-31T06:18:55.360535",
-    "last_updated": "2025-12-31T06:18:55.360542"
+    "created_at": "2025-12-31T12:21:38.240941",
+    "last_updated": "2025-12-31T12:21:38.240950"
   }
 }
