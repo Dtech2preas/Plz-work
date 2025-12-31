@@ -4,12 +4,44 @@
   "currently_airing_episodes": {
     "episodes": [
       {
+        "anime_name": "Tamon's B-Side",
+        "episode_number": 1,
+        "episode_title": "Tamon's B-Side - Episode 1",
+        "anime_id": "99c9e7db-403a-f564-bc74-52d7ea781f91",
+        "session_id": "a8bed0a582cc22ecacbfae1b8f59133a486dc52136ce974cfa06c30b963a4ced",
+        "episode_url": "https://animepahe.si/play/99c9e7db-403a-f564-bc74-52d7ea781f91/a8bed0a582cc22ecacbfae1b8f59133a486dc52136ce974cfa06c30b963a4ced"
+      },
+      {
+        "anime_name": "Jack-of-All-Trades, Party of None",
+        "episode_number": 1,
+        "episode_title": "Jack-of-All-Trades, Party of None - Episode 1",
+        "anime_id": "a688235b-021a-ef3d-9bf1-da361e93e53e",
+        "session_id": "9e94eb5a24e356ea568d7973e8db92cf086067e8a27cbcc376435ed4c1c0b1d5",
+        "episode_url": "https://animepahe.si/play/a688235b-021a-ef3d-9bf1-da361e93e53e/9e94eb5a24e356ea568d7973e8db92cf086067e8a27cbcc376435ed4c1c0b1d5"
+      },
+      {
+        "anime_name": "Style of Hiroshi Nohara's Lunch",
+        "episode_number": 10,
+        "episode_title": "Style of Hiroshi Nohara's Lunch - Episode 10",
+        "anime_id": "7a8967cf-1f47-cf39-74d9-450c493ae895",
+        "session_id": "b5ff7ddc0923385c9bdda7f186e229a57d69bbe97458bae3b3ab524358409717",
+        "episode_url": "https://animepahe.si/play/7a8967cf-1f47-cf39-74d9-450c493ae895/b5ff7ddc0923385c9bdda7f186e229a57d69bbe97458bae3b3ab524358409717"
+      },
+      {
         "anime_name": "100 Meters",
         "episode_number": 1,
         "episode_title": "100 Meters - Episode 1",
         "anime_id": "e69601ee-3c79-fb93-74f5-e105f76a9384",
         "session_id": "acf40c9d55194b9f0da8333130d136c4893f517bbd95a47b4a0488ce2ec97ada",
         "episode_url": "https://animepahe.si/play/e69601ee-3c79-fb93-74f5-e105f76a9384/acf40c9d55194b9f0da8333130d136c4893f517bbd95a47b4a0488ce2ec97ada"
+      },
+      {
+        "anime_name": "Kaguya-sama: Love Is War -Stairway to Adulthood",
+        "episode_number": 2,
+        "episode_title": "Kaguya-sama: Love Is War -Stairway to Adulthood - Episode 2",
+        "anime_id": "c481b164-17a5-af9d-80c3-9b6c991e253c",
+        "session_id": "7be188fdac6947cf7f20ffe01efc1876cd5b2b198d798bc6487da09a1b0f2a4b",
+        "episode_url": "https://animepahe.si/play/c481b164-17a5-af9d-80c3-9b6c991e253c/7be188fdac6947cf7f20ffe01efc1876cd5b2b198d798bc6487da09a1b0f2a4b"
       },
       {
         "anime_name": "Chitose Is in the Ramune Bottle",
@@ -450,50 +482,18 @@
         "anime_id": "fc37ad28-112b-e76b-9864-a17d67b473ad",
         "session_id": "67410ef87826d836364d522a5f30193e64d8c8c52ddbd94951bac7e10d9f0c19",
         "episode_url": "https://animepahe.si/play/fc37ad28-112b-e76b-9864-a17d67b473ad/67410ef87826d836364d522a5f30193e64d8c8c52ddbd94951bac7e10d9f0c19"
-      },
-      {
-        "anime_name": "Jujutsu Kaisen: Hidden Inventory/Premature Death",
-        "episode_number": 1,
-        "episode_title": "Jujutsu Kaisen: Hidden Inventory/Premature Death - Episode 1",
-        "anime_id": "909952d3-5f4d-ed22-62bf-44c3cc8bae30",
-        "session_id": "dd5a849064294de63158c9f11291637ba29141efae49fa897c20e08f1a1f787a",
-        "episode_url": "https://animepahe.si/play/909952d3-5f4d-ed22-62bf-44c3cc8bae30/dd5a849064294de63158c9f11291637ba29141efae49fa897c20e08f1a1f787a"
-      },
-      {
-        "anime_name": "The Laid Off Demon King",
-        "episode_number": 26,
-        "episode_title": "The Laid Off Demon King - Episode 26",
-        "anime_id": "fbdacd10-6172-abee-0e35-18fd00577b84",
-        "session_id": "5ad7dd247a540e768001e00bec4c84c453cbbf2b5f7649e9b8137ade69767119",
-        "episode_url": "https://animepahe.si/play/fbdacd10-6172-abee-0e35-18fd00577b84/5ad7dd247a540e768001e00bec4c84c453cbbf2b5f7649e9b8137ade69767119"
-      },
-      {
-        "anime_name": "I Saved Myself with a Potion!: Life in Another World",
-        "episode_number": 12,
-        "episode_title": "I Saved Myself with a Potion!: Life in Another World - Episode 12",
-        "anime_id": "80001918-2c6d-f629-413e-1e48bf14a2d4",
-        "session_id": "c63472249e2ef56e5a404800a8758d3445c736397e77faee3514fef573a8aa49",
-        "episode_url": "https://animepahe.si/play/80001918-2c6d-f629-413e-1e48bf14a2d4/c63472249e2ef56e5a404800a8758d3445c736397e77faee3514fef573a8aa49"
-      },
-      {
-        "anime_name": "Pass the Monster Meat, Milady!",
-        "episode_number": 12,
-        "episode_title": "Pass the Monster Meat, Milady! - Episode 12",
-        "anime_id": "c83d2023-0165-e51c-3501-64efd4645493",
-        "session_id": "d3b8cabbf3c4dc8f067e48425a500c0b27117225ae97d61faf9d87c0463ed37d",
-        "episode_url": "https://animepahe.si/play/c83d2023-0165-e51c-3501-64efd4645493/d3b8cabbf3c4dc8f067e48425a500c0b27117225ae97d61faf9d87c0463ed37d"
       }
     ],
-    "timestamp": "2025-12-31T12:21:38.240946",
+    "timestamp": "2025-12-31T18:16:41.496495",
     "count": 60
   },
   "popular_anime": {
     "anime": [],
-    "timestamp": "2025-12-31T12:21:38.240939",
+    "timestamp": "2025-12-31T18:16:41.496487",
     "count": 0
   },
   "metadata": {
-    "created_at": "2025-12-31T12:21:38.240941",
-    "last_updated": "2025-12-31T12:21:38.240950"
+    "created_at": "2025-12-31T18:16:41.496490",
+    "last_updated": "2025-12-31T18:16:41.496497"
   }
 }
