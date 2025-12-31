@@ -3,7 +3,7 @@
   "episode_iframes": {},
   "currently_airing_episodes": {
     "episodes": [],
-    "timestamp": "2025-12-30T18:17:22.565042",
+    "timestamp": "2025-12-31T00:54:57.512837",
     "count": 0
   },
   "popular_anime": {
@@ -159,11 +159,11 @@
         "url": "https://animepahe.si/anime/12df2d5e-9cd1-05ef-10eb-4b239641e215"
       }
     ],
-    "timestamp": "2025-12-30T18:17:22.565054",
+    "timestamp": "2025-12-31T00:54:57.512853",
     "count": 30
   },
   "metadata": {
-    "created_at": "2025-12-30T18:17:22.565051",
-    "last_updated": "2025-12-30T18:17:22.565056"
+    "created_at": "2025-12-31T00:54:57.512848",
+    "last_updated": "2025-12-31T00:54:57.512855"
   }
 }
