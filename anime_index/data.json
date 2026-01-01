@@ -4,6 +4,22 @@
   "currently_airing_episodes": {
     "episodes": [
       {
+        "anime_name": "There's No Freaking Way I'll be Your Lover! Unless...",
+        "episode_number": 17,
+        "episode_title": "There's No Freaking Way I'll be Your Lover! Unless... - Episode 17",
+        "anime_id": "0b0a0d39-0483-df42-08c3-10748e80135f",
+        "session_id": "6c857767f47cdac59f9c2de8c48a2cc60e435be05b69e17c4d654059f8a42f3b",
+        "episode_url": "https://animepahe.si/play/0b0a0d39-0483-df42-08c3-10748e80135f/6c857767f47cdac59f9c2de8c48a2cc60e435be05b69e17c4d654059f8a42f3b"
+      },
+      {
+        "anime_name": "Kaguya-sama: Love Is War -Stairway to Adulthood",
+        "episode_number": 2,
+        "episode_title": "Kaguya-sama: Love Is War -Stairway to Adulthood - Episode 2",
+        "anime_id": "c481b164-17a5-af9d-80c3-9b6c991e253c",
+        "session_id": "7be188fdac6947cf7f20ffe01efc1876cd5b2b198d798bc6487da09a1b0f2a4b",
+        "episode_url": "https://animepahe.si/play/c481b164-17a5-af9d-80c3-9b6c991e253c/7be188fdac6947cf7f20ffe01efc1876cd5b2b198d798bc6487da09a1b0f2a4b"
+      },
+      {
         "anime_name": "Tamon's B-Side",
         "episode_number": 1,
         "episode_title": "Tamon's B-Side - Episode 1",
@@ -34,14 +50,6 @@
         "anime_id": "e69601ee-3c79-fb93-74f5-e105f76a9384",
         "session_id": "acf40c9d55194b9f0da8333130d136c4893f517bbd95a47b4a0488ce2ec97ada",
         "episode_url": "https://animepahe.si/play/e69601ee-3c79-fb93-74f5-e105f76a9384/acf40c9d55194b9f0da8333130d136c4893f517bbd95a47b4a0488ce2ec97ada"
-      },
-      {
-        "anime_name": "Kaguya-sama: Love Is War -Stairway to Adulthood",
-        "episode_number": 2,
-        "episode_title": "Kaguya-sama: Love Is War -Stairway to Adulthood - Episode 2",
-        "anime_id": "c481b164-17a5-af9d-80c3-9b6c991e253c",
-        "session_id": "7be188fdac6947cf7f20ffe01efc1876cd5b2b198d798bc6487da09a1b0f2a4b",
-        "episode_url": "https://animepahe.si/play/c481b164-17a5-af9d-80c3-9b6c991e253c/7be188fdac6947cf7f20ffe01efc1876cd5b2b198d798bc6487da09a1b0f2a4b"
       },
       {
         "anime_name": "Chitose Is in the Ramune Bottle",
@@ -474,26 +482,18 @@
         "anime_id": "aa5d4cc0-ee27-7f78-e72d-2a50f50edb81",
         "session_id": "66f6c4fe45406aad7fa2692ed1eda07b88180ded30697b7e572187219696a935",
         "episode_url": "https://animepahe.si/play/aa5d4cc0-ee27-7f78-e72d-2a50f50edb81/66f6c4fe45406aad7fa2692ed1eda07b88180ded30697b7e572187219696a935"
-      },
-      {
-        "anime_name": "My Gift Lvl 9999 Unlimited Gacha: Backstabbed in a Backwater Dungeon, I'm Out for Revenge!",
-        "episode_number": 12,
-        "episode_title": "My Gift Lvl 9999 Unlimited Gacha: Backstabbed in a Backwater Dungeon, I'm Out for Revenge! - Episode 12",
-        "anime_id": "fc37ad28-112b-e76b-9864-a17d67b473ad",
-        "session_id": "67410ef87826d836364d522a5f30193e64d8c8c52ddbd94951bac7e10d9f0c19",
-        "episode_url": "https://animepahe.si/play/fc37ad28-112b-e76b-9864-a17d67b473ad/67410ef87826d836364d522a5f30193e64d8c8c52ddbd94951bac7e10d9f0c19"
       }
     ],
-    "timestamp": "2026-01-01T01:00:05.643596",
+    "timestamp": "2026-01-01T06:19:07.197758",
     "count": 60
   },
   "popular_anime": {
     "anime": [],
-    "timestamp": "2026-01-01T01:00:05.643588",
+    "timestamp": "2026-01-01T06:19:07.197750",
     "count": 0
   },
   "metadata": {
-    "created_at": "2026-01-01T01:00:05.643591",
-    "last_updated": "2026-01-01T01:00:05.643598"
+    "created_at": "2026-01-01T06:19:07.197753",
+    "last_updated": "2026-01-01T06:19:07.197760"
   }
 }
