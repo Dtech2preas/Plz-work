@@ -484,16 +484,16 @@
         "episode_url": "https://animepahe.si/play/fc37ad28-112b-e76b-9864-a17d67b473ad/67410ef87826d836364d522a5f30193e64d8c8c52ddbd94951bac7e10d9f0c19"
       }
     ],
-    "timestamp": "2025-12-31T18:16:41.496495",
+    "timestamp": "2026-01-01T01:00:05.643596",
     "count": 60
   },
   "popular_anime": {
     "anime": [],
-    "timestamp": "2025-12-31T18:16:41.496487",
+    "timestamp": "2026-01-01T01:00:05.643588",
     "count": 0
   },
   "metadata": {
-    "created_at": "2025-12-31T18:16:41.496490",
-    "last_updated": "2025-12-31T18:16:41.496497"
+    "created_at": "2026-01-01T01:00:05.643591",
+    "last_updated": "2026-01-01T01:00:05.643598"
   }
 }
