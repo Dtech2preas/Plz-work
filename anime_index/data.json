@@ -4,6 +4,14 @@
   "currently_airing_episodes": {
     "episodes": [
       {
+        "anime_name": "Cat's♥Eye",
+        "episode_number": 8,
+        "episode_title": "Cat's♥Eye - Episode 8",
+        "anime_id": "7d529bf2-8204-c55c-59bc-6bf89684f34a",
+        "session_id": "3b20265cb6510fb2e87656ee2bc71996fd7d6bf3be366141013fa7b772fc6d45",
+        "episode_url": "https://animepahe.si/play/7d529bf2-8204-c55c-59bc-6bf89684f34a/3b20265cb6510fb2e87656ee2bc71996fd7d6bf3be366141013fa7b772fc6d45"
+      },
+      {
         "anime_name": "So You're Raising a Warrior",
         "episode_number": 12,
         "episode_title": "So You're Raising a Warrior - Episode 12",
@@ -234,14 +242,6 @@
         "anime_id": "3a949d66-f993-e47d-e101-f53cb73cb941",
         "session_id": "61449f12797ee15eac59491f4c730f88035a579ea85db4109a6ffa5e34c97606",
         "episode_url": "https://animepahe.si/play/3a949d66-f993-e47d-e101-f53cb73cb941/61449f12797ee15eac59491f4c730f88035a579ea85db4109a6ffa5e34c97606"
-      },
-      {
-        "anime_name": "Cat's♥Eye",
-        "episode_number": 7,
-        "episode_title": "Cat's♥Eye - Episode 7",
-        "anime_id": "7d529bf2-8204-c55c-59bc-6bf89684f34a",
-        "session_id": "387f0eb33895d0c3872ddfee8e3279e56a186ea0bc83267fefc2b26dc540c598",
-        "episode_url": "https://animepahe.si/play/7d529bf2-8204-c55c-59bc-6bf89684f34a/387f0eb33895d0c3872ddfee8e3279e56a186ea0bc83267fefc2b26dc540c598"
       },
       {
         "anime_name": "Beyblade X",
@@ -484,16 +484,16 @@
         "episode_url": "https://animepahe.si/play/cfc12eb3-ec62-bfa1-6fd3-5eb6e06c729f/152c0e928f94411369dc76e67e0f65a97e9e46ca4c1bca4ad0471b4dbad5b6c8"
       }
     ],
-    "timestamp": "2026-01-02T06:19:05.100876",
+    "timestamp": "2026-01-02T12:21:14.594163",
     "count": 60
   },
   "popular_anime": {
     "anime": [],
-    "timestamp": "2026-01-02T06:19:05.100869",
+    "timestamp": "2026-01-02T12:21:14.594156",
     "count": 0
   },
   "metadata": {
-    "created_at": "2026-01-02T06:19:05.100871",
-    "last_updated": "2026-01-02T06:19:05.100884"
+    "created_at": "2026-01-02T12:21:14.594158",
+    "last_updated": "2026-01-02T12:21:14.594167"
   }
 }
