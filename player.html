@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player - D-TECH ANIME</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: white;
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .nav-btn {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        .nav-btn:hover { background: rgba(255, 255, 255, 0.2); color: #1a73e8; }
+        .player-container {
+            width: 100%;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            min-height: 50vh;
+        }
+        .player-iframe { width: 100%; height: 70vh; border: none; background: #000; }
+        .error-msg {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            text-align: center; color: #ff6b6b; width: 80%;
+        }
+        @media (max-width: 768px) { .player-iframe { height: 50vh; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="#" id="backLink" class="nav-btn"><i class="fas fa-arrow-left me-2"></i> Episodes</a>
+            <a href="index.html" class="nav-btn"><i class="fas fa-home me-2"></i> Home</a>
+        </div>
+
+        <div class="player-container" id="playerContainer">
+            <div class="error-msg">Loading Player...</div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const animeId = urlParams.get('anime_id');
+        const session = urlParams.get('session');
+        const passedIframe = urlParams.get('iframe');
+
+        document.getElementById('backLink').href = `episodes.html?id=${animeId}`;
+
+        async function initPlayer() {
+            const container = document.getElementById('playerContainer');
+
+            // 1. If iframe passed directly (Fresh Episodes)
+            if (passedIframe && passedIframe !== 'undefined') {
+                loadIframe(passedIframe);
+                return;
+            }
+
+            // 2. Check if it's in fresh_episodes.json (Double check)
+            try {
+                const fresh = await fetch('fresh_episodes.json').then(r => r.json()).catch(() => []);
+                const match = fresh.find(ep => ep.session_id === session);
+                if (match && match.iframe_url) {
+                    loadIframe(match.iframe_url);
+                    return;
+                }
+            } catch (e) { console.error("Error checking fresh episodes", e); }
+
+            // 3. Fallback: Check if it's in the static index (Rare, but possible if we add it later)
+            // Note: The static index currently doesn't store iframes for most.
+            // If we are here, we likely cannot play the video because we can't run the scraper.
+
+            showError();
+        }
+
+        function loadIframe(url) {
+            const container = document.getElementById('playerContainer');
+            // Decode if it was encoded in URL
+            let src = decodeURIComponent(url);
+            container.innerHTML = `
+                <iframe src="${src}"
+                        class="player-iframe"
+                        allowfullscreen
+                        webkitallowfullscreen
+                        mozallowfullscreen>
+                </iframe>`;
+        }
+
+        function showError() {
+            const container = document.getElementById('playerContainer');
+            container.innerHTML = `
+                <div class="error-msg">
+                    <h2>❌ Video Not Available</h2>
+                    <p>This episode is not in the "Fresh" cache and static scraping is not supported.</p>
+                    <p class="text-muted" style="font-size:0.8rem; margin-top:10px;">(Only episodes released in the last 24h are guaranteed to work on this demo)</p>
+                </div>`;
+        }
+
+        initPlayer();
+    </script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-TECH ANIME</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --dark-blue: #0d47a1;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-light: #f5f5f5;
+            --text-muted: #b0b0b0;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-bg) 100%);
+            padding: 2rem 0;
+            margin-bottom: 1.5rem;
+            border-radius: 0 0 1rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-box { max-width: 600px; margin: 0 auto; position: relative; }
+        .search-box input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+        }
+        .search-box button { background-color: var(--primary-blue); border-color: var(--primary-blue); }
+
+        #searchResults {
+            position: absolute;
+            top: 100%; left: 0; right: 0;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0 0 8px 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+        .search-item {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            cursor: pointer;
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+        }
+        .search-item:hover { background: rgba(255,255,255,0.1); }
+
+        .section-title {
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 0.8rem;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* --- HORIZONTAL SCROLL --- */
+        .media-scroller {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 160px;
+            gap: 1rem;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            padding-bottom: 1rem;
+            padding-left: 5px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-blue) var(--card-bg);
+        }
+        @media (min-width: 768px) { .media-scroller { grid-auto-columns: 200px; } }
+
+        .media-scroller::-webkit-scrollbar { height: 6px; }
+        .media-scroller::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+        .media-scroller::-webkit-scrollbar-thumb { background: var(--primary-blue); border-radius: 10px; }
+
+        /* --- CARDS --- */
+        .anime-card-compact {
+            background-color: transparent;
+            border: none;
+            position: relative;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        .anime-card-compact:hover { transform: translateY(-3px); color: var(--primary-blue); }
+
+        .cover-wrapper {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 2/3;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .anime-cover { width: 100%; height: 100%; object-fit: cover; }
+
+        .overlay-ep {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 20px 8px 5px 8px;
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
+        .ep-badge {
+            background-color: var(--primary-blue); color: white;
+            font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; font-weight: bold;
+        }
+
+        .play-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.2s;
+        }
+        .cover-wrapper:hover .play-overlay { opacity: 1; }
+
+        .compact-title {
+            font-size: 0.9rem; font-weight: 600; line-height: 1.2;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+            overflow: hidden; margin-bottom: 4px;
+        }
+        .compact-subtitle { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        .loading-cover {
+            background: linear-gradient(45deg, var(--dark-blue), #2c2c2c);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.2); height: 100%;
+        }
+
+        .d-none { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-6 mb-3"><i class="fas fa-play-circle me-2"></i>D-TECH ANIME</h1>
+                    <div class="search-box">
+                        <div class="input-group">
+                            <input type="text" id="searchInput" class="form-control"
+                                   placeholder="Search anime..." autocomplete="off">
+                            <button class="btn text-white" onclick="doSearch()"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div id="searchResults"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div id="continueWatchingSection" class="row d-none">
+            <div class="col-12">
+                <h3 class="section-title"><i class="fas fa-history me-2"></i>Continue Watching</h3>
+                <div class="media-scroller" id="historyContainer"></div>
+            </div>
+        </div>
+
+        <div id="favoritesSection" class="row d-none mt-4">
+            <div class="col-12">
+                <h3 class="section-title"><i class="fas fa-heart me-2"></i>My List</h3>
+                <div class="media-scroller" id="favoritesContainer"></div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-end mb-2">
+                    <h3 class="section-title m-0"><i class="fas fa-tv me-2"></i>Fresh Episodes</h3>
+                    <small class="text-muted" style="font-size: 0.8rem;">Updates 24h</small>
+                </div>
+                <div class="media-scroller" id="freshContainer">
+                    <div class="alert alert-info">Loading fresh episodes...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3 class="section-title"><i class="fas fa-fire me-2"></i>Popular Anime</h3>
+                <div class="media-scroller" id="popularContainer">
+                    <div class="alert alert-info">Loading popular anime...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 50px;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // --- 1. SEARCH LOGIC ---
+        let searchIndex = [];
+        fetch('search_index.json')
+            .then(r => r.json())
+            .then(data => { searchIndex = data; console.log("Search index loaded:", data.length); })
+            .catch(e => console.error("Could not load search index", e));
+
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length < 2) { searchResults.style.display = 'none'; return; }
+
+            const results = searchIndex.filter(item =>
+                item.title.toLowerCase().includes(query)
+            ).slice(0, 10);
+
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(item => `
+                    <a href="episodes.html?id=${item.id}" class="search-item">
+                        ${item.title}
+                    </a>
+                `).join('');
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // --- 2. DATA LOADING ---
+        const coverCache = new Map();
+
+        async function getAnimeCover(animeName) {
+            if (coverCache.has(animeName)) return coverCache.get(animeName);
+            const cached = localStorage.getItem(`cover_${animeName}`);
+            if (cached) { coverCache.set(animeName, cached); return cached; }
+
+            try {
+                const cleanName = animeName.replace(/[^\w\s]/gi, '').trim();
+                const res = await fetch(`https://kitsu.io/api/edge/anime?filter[text]=${encodeURIComponent(cleanName)}&page[limit]=1`);
+                const data = await res.json();
+                const url = data.data?.[0]?.attributes?.posterImage?.medium;
+                if (url) {
+                    coverCache.set(animeName, url);
+                    localStorage.setItem(`cover_${animeName}`, url);
+                    return url;
+                }
+            } catch (e) { console.error(e); }
+            return null;
+        }
+
+        async function loadImagesInContainer(containerId) {
+            const container = document.getElementById(containerId);
+            const els = container.querySelectorAll('.loading-cover');
+
+            // Intersection Observer to load images only when visible
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(async entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const name = el.getAttribute('data-anime-name');
+                        if (name && !el.hasAttribute('data-loaded')) {
+                            el.setAttribute('data-loaded', 'true');
+                            const url = await getAnimeCover(name);
+                            if (url) {
+                                const img = document.createElement('img');
+                                img.src = url; img.className = 'anime-cover';
+                                el.parentNode.replaceChild(img, el);
+                            }
+                        }
+                        obs.unobserve(el);
+                    }
+                });
+            });
+
+            els.forEach(el => observer.observe(el));
+        }
+
+        function playFresh(id, name, ep, session, iframe) {
+            // Save to history
+            const data = { animeId: id, animeName: name, epNum: ep, sessionId: session, timestamp: Date.now() };
+            let history = JSON.parse(localStorage.getItem('dtech_watch_history') || '[]');
+            history = history.filter(item => item.animeId !== id);
+            history.unshift(data);
+            localStorage.setItem('dtech_watch_history', JSON.stringify(history.slice(0,15)));
+
+            // Go to player
+            if (iframe) {
+                // Pass iframe directly to avoid lookup failure
+                const encodedIframe = encodeURIComponent(iframe);
+                window.location.href = `player.html?anime_id=${id}&session=${session}&iframe=${encodedIframe}`;
+            } else {
+                alert("Video source not available yet. Please try again later.");
+            }
+        }
+
+        Promise.all([
+            fetch('fresh_episodes.json').then(r => r.json()).catch(() => []),
+            fetch('popular_anime.json').then(r => r.json()).catch(() => [])
+        ]).then(([fresh, popular]) => {
+            // Render Fresh
+            const freshContainer = document.getElementById('freshContainer');
+            if (fresh.length) {
+                freshContainer.innerHTML = fresh.map(ep => `
+                    <div class="anime-card-compact"
+                         onclick="playFresh('${ep.anime_id}', '${ep.anime_name.replace(/'/g, "\\'")}', '${ep.episode_number}', '${ep.session_id}', '${ep.iframe_url || ''}')">
+                        <div class="cover-wrapper">
+                            <div class="loading-cover" data-anime-name="${ep.anime_name}">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="play-overlay"><i class="fas fa-play-circle fa-2x text-white"></i></div>
+                            <div class="overlay-ep"><span class="ep-badge">Ep ${ep.episode_number}</span></div>
+                        </div>
+                        <div class="compact-title">${ep.anime_name}</div>
+                        <div class="compact-subtitle">Episode ${ep.episode_number}</div>
+                    </div>
+                `).join('');
+                loadImagesInContainer('freshContainer');
+            } else {
+                freshContainer.innerHTML = '<div class="alert alert-warning">No fresh episodes found.</div>';
+            }
+
+            // Render Popular
+            const popularContainer = document.getElementById('popularContainer');
+            if (popular.length) {
+                popularContainer.innerHTML = popular.map(anime => `
+                    <a href="episodes.html?id=${anime.id}" class="anime-card-compact">
+                        <div class="cover-wrapper">
+                            <div class="loading-cover" data-anime-name="${anime.title}">
+                                <i class="fas fa-film"></i>
+                            </div>
+                            <div class="play-overlay"><i class="fas fa-list fa-2x text-white"></i></div>
+                        </div>
+                        <div class="compact-title">${anime.title}</div>
+                        <div class="compact-subtitle">Series</div>
+                    </a>
+                `).join('');
+                loadImagesInContainer('popularContainer');
+            }
+        });
+
+        // Load History/Favorites (Client Side)
+        function loadUserData() {
+            const history = JSON.parse(localStorage.getItem('dtech_watch_history') || '[]');
+            const favs = JSON.parse(localStorage.getItem('dtech_favorites') || '[]');
+
+            if (history.length) {
+                document.getElementById('continueWatchingSection').classList.remove('d-none');
+                document.getElementById('historyContainer').innerHTML = history.map(item => `
+                    <a href="episodes.html?id=${item.animeId}" class="anime-card-compact">
+                        <div class="cover-wrapper">
+                            <div class="loading-cover" data-anime-name="${item.animeName}"><i class="fas fa-play"></i></div>
+                            <div class="play-overlay"><i class="fas fa-play-circle fa-2x text-white"></i></div>
+                            <div class="overlay-ep"><span class="ep-badge">Ep ${item.epNum}</span></div>
+                        </div>
+                        <div class="compact-title">${item.animeName}</div>
+                        <div class="compact-subtitle">Continue</div>
+                    </a>
+                `).join('');
+                loadImagesInContainer('historyContainer');
+            }
+
+            if (favs.length) {
+                document.getElementById('favoritesSection').classList.remove('d-none');
+                document.getElementById('favoritesContainer').innerHTML = favs.map(item => `
+                    <a href="episodes.html?id=${item.id}" class="anime-card-compact">
+                        <div class="cover-wrapper">
+                            <div class="loading-cover" data-anime-name="${item.title}"><i class="fas fa-heart"></i></div>
+                        </div>
+                        <div class="compact-title">${item.title}</div>
+                    </a>
+                `).join('');
+                loadImagesInContainer('favoritesContainer');
+            }
+        }
+
+        loadUserData();
+    </script>
+</body>
+</html>

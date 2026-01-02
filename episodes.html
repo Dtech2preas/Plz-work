@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Episodes - D-TECH ANIME</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            color: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            background: rgba(30, 30, 30, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background: rgba(26, 115, 232, 0.1);
+            border: 1px solid rgba(26, 115, 232, 0.3);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .back-btn:hover { background: #1a73e8; }
+
+        .anime-info { flex: 1; }
+        .title-row { display: flex; align-items: center; gap: 15px; }
+        .anime-info h1 {
+            font-size: 2rem; margin: 0;
+            background: linear-gradient(45deg, #1a73e8, #64b5f6);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .fav-btn {
+            background: transparent; border: 2px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.5); width: 40px; height: 40px;
+            border-radius: 50%; cursor: pointer; transition: all 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .fav-btn:hover { border-color: #ff4757; color: #ff4757; }
+        .fav-btn.active { background: #ff4757; border-color: #ff4757; color: white; }
+
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .episode-card {
+            background: #1e1e1e; border-radius: 10px; padding: 15px;
+            text-align: center; border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease; cursor: pointer;
+            display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+        }
+        .episode-card:hover { transform: translateY(-5px); background: #252525; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+        .episode-number { font-size: 1.4rem; font-weight: bold; margin-bottom: 5px; color: #1a73e8; }
+        .episode-title { font-size: 0.85rem; opacity: 0.8; margin-bottom: 15px; line-height: 1.3; }
+
+        .watch-btn {
+            display: block; padding: 8px 0; background: #1a73e8;
+            color: white; text-decoration: none; border-radius: 6px;
+            font-weight: 600; font-size: 0.9rem; transition: background 0.2s;
+        }
+        .watch-btn:hover { background: #1557b0; }
+        .watch-btn.disabled { background: #444; cursor: not-allowed; opacity: 0.7; }
+
+        @media (max-width: 768px) {
+            .episodes-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .header { text-align: center; justify-content: center; }
+            .title-row { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+            <div class="anime-info">
+                <div class="title-row">
+                    <h1 id="animeTitle">Loading...</h1>
+                    <button id="favBtn" class="fav-btn" onclick="toggleFavorite()"><i class="fas fa-heart"></i></button>
+                </div>
+                <p id="episodeCount" class="mt-2 opacity-75"></p>
+            </div>
+        </div>
+
+        <div id="episodesGrid" class="episodes-grid"></div>
+        <div id="statusMsg" class="text-center mt-5"></div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const animeId = urlParams.get('id');
+        let currentAnime = null;
+
+        // Helper to find the correct index file based on first letter
+        // Since we don't have the title yet, we have to search search_index.json first
+        async function loadAnimeData() {
+            if (!animeId) {
+                document.getElementById('statusMsg').innerHTML = '<h2>No Anime ID Provided</h2>';
+                return;
+            }
+
+            try {
+                // 1. Get basic info from search index (to find title -> letter)
+                const searchIndex = await fetch('search_index.json').then(r => r.json());
+                const meta = searchIndex.find(a => a.id === animeId);
+
+                if (!meta) { throw new Error("Anime not found in index."); }
+
+                document.getElementById('animeTitle').textContent = meta.title;
+                currentAnime = meta;
+                checkFavorite(meta);
+
+                // 2. Determine file based on title
+                let letter = meta.title.charAt(0).toUpperCase();
+                if (!/[A-Z]/.test(letter)) letter = '#';
+
+                // Map special chars if any (Simplified logic, might need adjustment based on how index was built)
+                // The master_index showed files like anime_A.json, anime_#.json, anime_Ö.json
+                // For now, assume standard ASCII or #.
+
+                const indexUrl = `anime_index/anime_${encodeURIComponent(letter)}.json`;
+                const data = await fetch(indexUrl).then(r => r.json());
+
+                const animeDetails = data.anime.find(a => a.id === animeId);
+                if (!animeDetails) throw new Error("Details not found in letter index.");
+
+                renderEpisodes(animeDetails);
+
+            } catch (e) {
+                console.error(e);
+                document.getElementById('statusMsg').innerHTML = `<h2>Error loading anime</h2><p>${e.message}</p>`;
+            }
+        }
+
+        function renderEpisodes(anime) {
+            const grid = document.getElementById('episodesGrid');
+            document.getElementById('episodeCount').textContent = `${anime.episodes.length} Episodes`;
+
+            if (anime.episodes.length === 0) {
+                grid.innerHTML = '<p>No episodes found.</p>';
+                return;
+            }
+
+            grid.innerHTML = anime.episodes.map(ep => {
+                // Clean title logic
+                let cleanTitle = ep.title.replace(/^Watch\s+/, '').replace(/\s+Online$/, '').replace(/- \d+/, '').trim();
+                if (cleanTitle.length < 2) cleanTitle = "Episode " + ep.number;
+
+                // Check if iframe exists (it usually doesn't in the static index)
+                // We will rely on player.html to handle the missing iframe or look it up in "fresh"
+
+                return `
+                <div class="episode-card">
+                    <div>
+                        <div class="episode-number">EP ${ep.number}</div>
+                        <div class="episode-title">${cleanTitle}</div>
+                    </div>
+                    <a href="player.html?anime_id=${animeId}&session=${ep.episode_id}"
+                       class="watch-btn"
+                       onclick="saveHistory('${anime.title.replace(/'/g, "\\'")}', '${ep.number}', '${ep.episode_id}')">
+                       <i class="fas fa-play me-1"></i> Play
+                    </a>
+                </div>`;
+            }).join('');
+        }
+
+        function checkFavorite(anime) {
+            const favs = JSON.parse(localStorage.getItem('dtech_favorites') || '[]');
+            if (favs.some(f => f.id === anime.id)) {
+                document.getElementById('favBtn').classList.add('active');
+            }
+        }
+
+        function toggleFavorite() {
+            if (!currentAnime) return;
+            let favs = JSON.parse(localStorage.getItem('dtech_favorites') || '[]');
+            const idx = favs.findIndex(f => f.id === currentAnime.id);
+
+            if (idx === -1) {
+                favs.push({ id: currentAnime.id, title: currentAnime.title });
+                document.getElementById('favBtn').classList.add('active');
+            } else {
+                favs.splice(idx, 1);
+                document.getElementById('favBtn').classList.remove('active');
+            }
+            localStorage.setItem('dtech_favorites', JSON.stringify(favs));
+        }
+
+        function saveHistory(animeName, epNum, session) {
+            // Just for good measure, though player page handles it too
+            const data = { animeId, animeName, epNum, sessionId: session, timestamp: Date.now() };
+            // We usually rely on the Player page to save, but saving here is safer for static navigation
+            let history = JSON.parse(localStorage.getItem('dtech_watch_history') || '[]');
+            history = history.filter(item => item.animeId !== animeId);
+            history.unshift(data);
+            localStorage.setItem('dtech_watch_history', JSON.stringify(history.slice(0,15)));
+        }
+
+        loadAnimeData();
+    </script>
+</body>
+</html>
