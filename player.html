@@ -82,11 +82,42 @@
                 }
             } catch (e) { console.error("Error checking fresh episodes", e); }
 
-            // 3. Fallback: Check if it's in the static index (Rare, but possible if we add it later)
-            // Note: The static index currently doesn't store iframes for most.
-            // If we are here, we likely cannot play the video because we can't run the scraper.
+            // 3. Fallback: Check if it's in the static index
+            if (animeId && session) {
+                try {
+                    await loadFromStaticIndex(animeId, session);
+                    return;
+                } catch (e) {
+                    console.log("Static index lookup failed:", e.message);
+                }
+            }
 
             showError();
+        }
+
+        async function loadFromStaticIndex(animeId, sessionId) {
+            // 1. Get basic info from search index
+            const searchIndex = await fetch('search_index.json').then(r => r.json());
+            const meta = searchIndex.find(a => a.id === animeId);
+
+            if (!meta) throw new Error("Anime not found in index.");
+
+            // 2. Determine file based on title
+            let letter = meta.title.charAt(0).toUpperCase();
+            if (!/[A-Z]/.test(letter)) letter = '#';
+
+            const indexUrl = `anime_index/anime_${encodeURIComponent(letter)}.json`;
+            const data = await fetch(indexUrl).then(r => r.json());
+
+            const animeDetails = data.anime.find(a => a.id === animeId);
+            if (!animeDetails) throw new Error("Details not found in letter index.");
+
+            const episode = animeDetails.episodes.find(ep => ep.episode_id === sessionId);
+            if (episode && episode.iframe_url) {
+                loadIframe(episode.iframe_url);
+            } else {
+                throw new Error("Episode iframe not found in static index.");
+            }
         }
 
         function loadIframe(url) {
